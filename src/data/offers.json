@@ -1,0 +1,134 @@
+[
+  {
+    "id": "off-espresso-15",
+    "name": "July Espresso 15%",
+    "type": "percent_off",
+    "percent": 15,
+    "scope": { "category": "espresso" },
+    "validFrom": "2026-07-01",
+    "validTo": "2026-07-31"
+  },
+  {
+    "id": "off-latte12-alt",
+    "name": "Latte Loyalty 15%",
+    "type": "percent_off",
+    "percent": 15,
+    "scope": { "productIds": ["m-latte-12"] },
+    "validFrom": "2026-06-15",
+    "validTo": "2026-07-31"
+  },
+  {
+    "id": "off-morning-bundle",
+    "name": "Morning Combo",
+    "type": "bundle",
+    "products": ["m-latte-12", "m-croissant"],
+    "amountOff": 1.50,
+    "validFrom": "2026-07-05",
+    "validTo": "2026-08-31"
+  },
+  {
+    "id": "off-cold-cookie",
+    "name": "Cold Brew & Cookie",
+    "type": "bundle",
+    "products": ["m-cold-brew", "m-cookie"],
+    "amountOff": 1.00,
+    "validFrom": "2026-07-01",
+    "validTo": "2026-07-25"
+  },
+  {
+    "id": "off-gold-brew",
+    "name": "Gold Member Brew 20%",
+    "type": "percent_off",
+    "percent": 20,
+    "scope": { "category": "brew" },
+    "eligibleTiers": ["gold"],
+    "validFrom": "2026-06-15",
+    "validTo": "2026-09-30"
+  },
+  {
+    "id": "off-silver-bakery",
+    "name": "Silver+ Bakery 10%",
+    "type": "percent_off",
+    "percent": 10,
+    "scope": { "category": "bakery" },
+    "eligibleTiers": ["silver", "gold"],
+    "validFrom": "2026-06-01",
+    "validTo": "2026-12-31"
+  },
+  {
+    "id": "off-tuesday-tea",
+    "name": "Tuesday Tea 25%",
+    "type": "percent_off",
+    "percent": 25,
+    "scope": { "category": "tea" },
+    "dayOfWeek": ["Tue"],
+    "validFrom": "2026-06-01",
+    "validTo": "2026-08-31"
+  },
+  {
+    "id": "off-weekend-bakery",
+    "name": "Weekend Bakery $2 Off",
+    "type": "spend_threshold",
+    "category": "bakery",
+    "minSubtotal": 15,
+    "amountOff": 2,
+    "dayOfWeek": ["Sat", "Sun"],
+    "validFrom": "2026-06-01",
+    "validTo": "2026-08-31"
+  },
+  {
+    "id": "off-big-ticket",
+    "name": "Big Ticket $3 Off",
+    "type": "spend_threshold",
+    "minSubtotal": 25,
+    "amountOff": 3,
+    "validFrom": "2026-07-01",
+    "validTo": "2026-08-31"
+  },
+  {
+    "id": "off-big-ticket-alt",
+    "name": "Big Ticket Deluxe $3 Off",
+    "type": "spend_threshold",
+    "minSubtotal": 30,
+    "amountOff": 3,
+    "validFrom": "2026-07-01",
+    "validTo": "2026-08-31"
+  },
+  {
+    "id": "off-june-espresso",
+    "name": "June Espresso Blast 30%",
+    "type": "percent_off",
+    "percent": 30,
+    "scope": { "category": "espresso" },
+    "validFrom": "2026-06-01",
+    "validTo": "2026-06-30"
+  },
+  {
+    "id": "off-fall-merch",
+    "name": "Fall Merch 20%",
+    "type": "percent_off",
+    "percent": 20,
+    "scope": { "category": "merch" },
+    "validFrom": "2026-09-01",
+    "validTo": "2026-09-30"
+  },
+  {
+    "id": "off-basic-espresso",
+    "name": "Basic Member Espresso Nudge 8%",
+    "type": "percent_off",
+    "percent": 8,
+    "scope": { "category": "espresso" },
+    "eligibleTiers": ["basic"],
+    "validFrom": "2026-07-01",
+    "validTo": "2026-07-31"
+  },
+  {
+    "id": "off-espresso-flash",
+    "name": "Espresso Sampler Flash",
+    "type": "bundle",
+    "products": ["m-espresso", "m-mocha"],
+    "amountOff": 4.00,
+    "validFrom": "2026-07-01",
+    "validTo": "2026-07-31"
+  }
+]

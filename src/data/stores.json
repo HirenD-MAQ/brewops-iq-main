@@ -1,0 +1,10 @@
+[
+  { "id": "s-downtown",   "name": "Downtown Roastery",  "region": "urban-core",   "openHour": 6, "closeHour": 21 },
+  { "id": "s-university", "name": "University Campus",  "region": "urban-core",   "openHour": 7, "closeHour": 22 },
+  { "id": "s-market",     "name": "Market Square",      "region": "urban-core",   "openHour": 7, "closeHour": 20 },
+  { "id": "s-airport-b",  "name": "Airport Terminal B", "region": "airport-line", "openHour": 5, "closeHour": 23 },
+  { "id": "s-airport-c",  "name": "Airport Terminal C", "region": "airport-line", "openHour": 5, "closeHour": 23 },
+  { "id": "s-riverwalk",  "name": "Riverwalk Kiosk",    "region": "suburban-arc", "openHour": 7, "closeHour": 19 },
+  { "id": "s-tech-park",  "name": "Tech Park",          "region": "suburban-arc", "openHour": 6, "closeHour": 20 },
+  { "id": "s-old-town",   "name": "Old Town",           "region": "suburban-arc", "openHour": 8, "closeHour": 20 }
+]

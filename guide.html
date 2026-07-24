@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BrewOps IQ — Harness Hackathon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ground:#f5efe7; --panel:#ffffff; --ink:#2c2118; --muted:#6a5b4b; --hair:#e3d8ca;
+    --accent:#7a3f10; --accent-soft:#f4e4d0; --good:#2e9e6b; --good-soft:#e4f2ea;
+    --bad:#c0492e;
+    --shadow:0 1px 2px rgba(20,24,31,.06),0 8px 24px rgba(20,24,31,.05);
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#1a130d; --panel:#241a11; --ink:#efe7dc; --muted:#a89a89; --hair:#3a2b1e;
+      --accent:#e0a24a; --accent-soft:#33220f; --good:#4bbd85; --good-soft:#12241b;
+      --bad:#e06b4e;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;font-size:16px}
+  .wrap{max-width:820px;margin:0 auto;padding:0 22px}
+  section{padding:48px 0;border-top:1px solid var(--hair)}
+  section:first-of-type{border-top:0}
+  h1,h2,h3{line-height:1.15;text-wrap:balance;margin:0}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:14px}
+  p{margin:0 0 14px;max-width:64ch}
+  a{color:var(--accent)}
+  code,.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.94em}
+  .lede{font-size:19px;color:var(--muted)}
+
+  .hero{padding:56px 0 44px}
+  .hero h1{font-size:clamp(32px,6vw,50px);font-weight:800;letter-spacing:-.02em}
+  .hero h1 .amber{color:var(--accent)}
+  .hero .lede{margin-top:16px;font-size:20px;max-width:60ch}
+  .proof{margin-top:30px;display:grid;grid-template-columns:1fr auto 1fr;gap:0;
+    background:var(--panel);border:1px solid var(--hair);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .proof .cell{padding:18px 22px;min-width:0}
+  .proof .cell.mid{display:flex;align-items:center;justify-content:center;color:var(--muted);
+    border-left:1px solid var(--hair);border-right:1px solid var(--hair);font-family:var(--mono);font-size:22px}
+  .proof .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600}
+  .proof .v{font-size:24px;font-weight:750;margin-top:6px;font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .proof .cell.win .v{color:var(--good)}
+  .proof .sub{font-size:13px;color:var(--muted);margin-top:2px}
+  @media(max-width:560px){.proof{grid-template-columns:1fr}.proof .cell.mid{border:0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:8px}}
+
+  .steps{display:flex;flex-direction:column;gap:6px;margin-top:22px}
+  .step{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:18px;border:1px solid var(--hair);
+    background:var(--panel);border-radius:12px}
+  .step .n{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--accent);
+    border:1px solid var(--hair);border-radius:9px;height:34px;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:17px;font-weight:700;margin-bottom:5px}
+  .step p{font-size:15px;margin:0;color:var(--muted)}
+  .step p+p{margin-top:8px}
+  .step .cmd{font-family:var(--mono);font-size:13px;background:var(--ground);border:1px solid var(--hair);
+    border-radius:8px;padding:9px 12px;color:var(--ink);margin-top:10px;overflow-x:auto;white-space:nowrap}
+  .step>div{min-width:0}
+
+  .callout{background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;padding:22px 24px;margin-top:20px}
+  .callout .eyebrow{color:var(--accent)}
+  .callout h3{font-size:19px;font-weight:750;margin-bottom:10px}
+  .fmt{margin-top:16px;border:1px dashed var(--accent);border-radius:10px;padding:14px 16px;background:var(--panel)}
+  .fmt-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:9px;font-weight:600}
+  .fmt-file{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ink);background:var(--ground);
+    border:1px solid var(--hair);border-radius:7px;padding:6px 14px;display:inline-block;font-variant-numeric:tabular-nums}
+  .fmt-note{font-size:13px;color:var(--muted);margin-top:10px}
+
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px}
+  .card{background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+  .card .tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600}
+  .card h3{font-size:16px;font-weight:750;margin:6px 0 6px}
+  .card p{font-size:14px;color:var(--muted);margin:0}
+  .card.gate{border-color:var(--accent)}
+  @media(max-width:640px){.cards{grid-template-columns:1fr}}
+
+  .trap{background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:18px 20px;margin-top:14px}
+  .trap h4{margin:0 0 6px;font-size:15px;font-family:var(--mono);color:var(--bad)}
+  .trap p{font-size:14px;margin:0;color:var(--muted)}
+
+  footer{padding:36px 0 60px;color:var(--muted);font-size:13px;font-family:var(--mono)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">BrewOps IQ · AI harness challenge</div>
+    <h1>Same feature suite.<br>Best <span class="amber">harness</span> wins.</h1>
+    <p class="lede">Everyone builds the same three missing modules — pricing, store audit,
+      and region settlement, specified in <code>SPEC.md</code>. Too big to one-shot
+      reliably; and your agent starts every run with <b>zero context</b>. The files
+      you engineer around it — the instructions, repo-map, briefs, and skills that
+      become its memory — are the contest.</p>
+    <p class="lede" style="margin-top:6px">Cheapest correct submission wins.</p>
+
+    <div class="proof">
+      <div class="cell win">
+        <div class="k">Champion example</div>
+        <div class="v">5.20 credits</div>
+        <div class="sub">gpt-5-mini · 3 staged runs · full pass</div>
+      </div>
+      <div class="cell mid">vs</div>
+      <div class="cell">
+        <div class="k">Naive one-shot example</div>
+        <div class="v">18.60 credits</div>
+        <div class="sub">gpt-5-codex · 1 run · full pass</div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="eyebrow">Before the session · one-time setup (5 min)</div>
+    <h2>Prerequisites</h2>
+    <p>Do this <b>before</b> you arrive. A missing or wrong login is the single thing
+      that'll cost you time on the day — don't sort it out during the race.</p>
+    <div class="steps">
+      <div class="step"><div class="n">✓</div><div>
+        <h3>Node.js 20+</h3>
+        <div class="cmd">node --version   # want v20 or newer</div>
+      </div></div>
+      <div class="step"><div class="n">✓</div><div>
+        <h3>Install the GitHub Copilot CLI</h3>
+        <div class="cmd">npm install -g @github/copilot</div>
+        <p>On Windows PowerShell, run this once so the CLI is allowed to run:</p>
+        <div class="cmd">Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force</div>
+        <p>Then check <code>copilot --version</code>. If it's "not recognized," reopen your terminal.</p>
+      </div></div>
+      <div class="step"><div class="n">✓</div><div>
+        <h3>Sign in — with the RIGHT account</h3>
+        <div class="cmd">copilot</div>
+        <p>Sign in with the <b>GitHub account that has your Copilot license</b> (your work account) —
+          <b>not</b> a personal one.</p>
+      </div></div>
+      <div class="step"><div class="n">✓</div><div>
+        <h3>Confirm it works</h3>
+        <div class="cmd">copilot -p "hello"</div>
+        <p>You should see an <code>AI Credits …</code> line at the end. No line = you're not signed in with a
+          Copilot-enabled account.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">The flow · six steps</div>
+    <h2>What you actually do</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div>
+        <h3>Fork the repo</h3>
+        <p>On the repo page, click <b>Fork</b>. That's your private copy of the arena — no invite needed.</p>
+      </div></div>
+      <div class="step"><div class="n">2</div><div>
+        <h3>Clone your fork &amp; install</h3>
+        <div class="cmd">git clone https://github.com/&lt;you&gt;/brewops-iq &amp;&amp; cd brewops-iq &amp;&amp; npm install</div>
+      </div></div>
+      <div class="step"><div class="n">3</div><div>
+        <h3>Build your harness — this is the whole competition</h3>
+        <p>The agent has no memory between runs; your files are its brain. Fair game:
+          <code>.github/copilot-instructions.md</code> and <code>AGENTS.md</code>, a repo-map,
+          distilled per-module briefs, skills (<code>copilot skill</code>), a plan/progress
+          file you update between runs. <b>How you engineer this is the challenge.</b></p>
+        <p><b>SPEC.md is the only source of truth.</b> The files under <code>src/legacy/</code>
+          and <code>docs/RETRO.md</code> describe the old register software — their rules
+          contradict SPEC.md and are traps. Your harness has to name them and steer clear.</p>
+      </div></div>
+      <div class="step"><div class="n">4</div><div>
+        <h3>Run the agent — as many runs as your strategy needs</h3>
+        <p>The wrapper runs Copilot with a fixed prompt against your harness files and
+          <b>records each run's cost to <code>COST.txt</code> automatically.</b> You steer
+          between runs by <b>editing your harness files</b> — e.g. scope run 2 to
+          "audit module only".</p>
+        <div class="cmd">node agent-run.mjs --model gpt-5-mini</div>
+        <p><code>gpt-5-mini</code> is just an example — <b>use any model you like</b> with
+          <code>--model &lt;name&gt;</code>.</p>
+      </div></div>
+      <div class="step"><div class="n">5</div><div>
+        <h3>Iterate — and stay lean</h3>
+        <p>Three focused runs often beat one mega-run that fails and retries. Each run
+          <b>adds to your cumulative <code>COST.txt</code></b>. Switch models freely —
+          cheapest model your harness can carry through the gate wins. The agent must
+          never write or run tests.</p>
+      </div></div>
+      <div class="step"><div class="n">6</div><div>
+        <h3>Commit &amp; push — then re-push to climb</h3>
+        <div class="cmd">git add src COST.txt &amp;&amp; git commit -m submit &amp;&amp; git push</div>
+        <p>At each checkpoint the leaderboard updates with your score + cost. Refine,
+          re-run, push again. <b>Pencils down = your last push.</b></p>
+      </div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="callout">
+      <div class="eyebrow">How cost is measured</div>
+      <h3>Run your agent through the wrapper — cost tracks itself</h3>
+      <p>The Copilot CLI prints the <b>exact credits</b> it spent after every run.
+        <code>agent-run.mjs</code> reads that number and <b>adds each run's credits
+        to <code>COST.txt</code> for you</b> — nothing to read off a screen.</p>
+      <p><b>Pick your model</b> with <code>--model &lt;name&gt;</code>. To see your
+        available models, run <code>copilot</code> then <code>/model</code>.</p>
+
+      <div class="fmt">
+        <div class="fmt-label">COST.txt — the whole file</div>
+        <div class="fmt-file">5.20</div>
+        <div class="fmt-note"><b>One number on the first line</b> — your total AI credits
+          across <i>every</i> run, not just your last. Nothing else in the file.
+          (1 credit = $0.01; the judge reads the first number it finds.)</div>
+      </div>
+
+      <p style="margin:14px 0 0;font-size:14px;color:var(--muted)">
+        Under-reporting is a DQ. Top scorers screen-share their credit total before prizes.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Watch out — the repo has traps on purpose</div>
+    <h2>Files that will mislead a naive agent</h2>
+    <p>These files exist to teach the value of guardrails. Your harness should tell the
+      agent to ignore them.</p>
+
+    <div class="trap">
+      <h4>src/legacy/pricingV0.ts</h4>
+      <p>The old FieldPos register pricing. Uses <b>banker's rounding</b>, <b>cumulative
+        offer stacking</b>, an <b>automatic tier discount</b> before offers, <b>exclusive
+        validTo</b>, and <b>at most one bundle per ticket</b>. Every one of those rules
+        contradicts SPEC.md. A cheap model asked to "look around first" will copy the
+        shape and lose the tests.</p>
+    </div>
+    <div class="trap">
+      <h4>src/legacy/oldTiers.ts</h4>
+      <p>A "tier matrix" claiming silver = 5% off, gold = 10% off, plus a "regional
+        seasonal uplift". <b>None of this exists in SPEC.md.</b> Tier only affects
+        offer eligibility.</p>
+    </div>
+    <div class="trap">
+      <h4>docs/RETRO.md</h4>
+      <p>Retrospective notes. Says finance "insists on banker's rounding", offers "stack
+        cumulatively", <code>dayOfWeek</code> was cancelled, <code>eligibleTiers</code>
+        is a wishlist, and threshold offers qualify on the gross subtotal. All wrong
+        vs. SPEC.md. A conversational summary of these notes will burn your credits.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">How you're scored</div>
+    <h2>Qualify, then cheapest wins</h2>
+    <div class="cards">
+      <div class="card gate">
+        <div class="tag">Step 1 · qualify</div>
+        <h3>The gate</h3>
+        <p>Your modules must pass <b>100% of the core hidden tests</b> — across all three parts.
+          A good harness gets there; a bare one-shot doesn't.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Step 2 · win</div>
+        <h3>Champion</h3>
+        <p>Lowest total credit cost among everyone who qualifies. Model choice is your biggest lever.
+          Ties break on the bonus edge-case tests, then earliest to qualify.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="padding:0">
+      SPEC.md is the single source of truth. Everything else — README, RULES, this guide,
+      even the retro doc — exists to help you read that spec correctly. Good luck.
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "urban-core",
+    "name": "Urban Core",
+    "stores": [
+      { "storeId": "s-downtown",   "openTime": "06:00" },
+      { "storeId": "s-university", "openTime": "07:00" },
+      { "storeId": "s-market",     "openTime": "07:00" },
+      { "storeId": "s-downtown",   "openTime": "18:00" }
+    ]
+  },
+  {
+    "id": "airport-line",
+    "name": "Airport Line",
+    "stores": [
+      { "storeId": "s-airport-b", "openTime": "05:00" },
+      { "storeId": "s-airport-c", "openTime": "05:00" }
+    ]
+  },
+  {
+    "id": "suburban-arc",
+    "name": "Suburban Arc",
+    "stores": [
+      { "storeId": "s-riverwalk", "openTime": "07:00" },
+      { "storeId": "s-tech-park", "openTime": "06:00" },
+      { "storeId": "s-old-town",  "openTime": "08:00" }
+    ]
+  }
+]

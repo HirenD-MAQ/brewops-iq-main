@@ -1,0 +1,20 @@
+[
+  { "id": "m-latte-12", "name": "Latte 12oz", "category": "espresso", "basePrice": 4.50 },
+  { "id": "m-latte-16", "name": "Latte 16oz", "category": "espresso", "basePrice": 5.25 },
+  { "id": "m-cappuccino", "name": "Cappuccino 8oz", "category": "espresso", "basePrice": 4.25 },
+  { "id": "m-espresso", "name": "Espresso Double", "category": "espresso", "basePrice": 3.50 },
+  { "id": "m-mocha", "name": "Mocha 12oz", "category": "espresso", "basePrice": 5.15 },
+  { "id": "m-drip-12", "name": "Drip Coffee 12oz", "category": "brew", "basePrice": 2.75 },
+  { "id": "m-drip-16", "name": "Drip Coffee 16oz", "category": "brew", "basePrice": 3.25 },
+  { "id": "m-cold-brew", "name": "Cold Brew 16oz", "category": "brew", "basePrice": 4.75 },
+  { "id": "m-pourover", "name": "Single-Origin Pourover", "category": "brew", "basePrice": 5.50 },
+  { "id": "m-matcha", "name": "Matcha Latte 12oz", "category": "tea", "basePrice": 5.00 },
+  { "id": "m-chai", "name": "Chai Latte 12oz", "category": "tea", "basePrice": 4.75 },
+  { "id": "m-earl-grey", "name": "Earl Grey Pot", "category": "tea", "basePrice": 3.85 },
+  { "id": "m-croissant", "name": "Butter Croissant", "category": "bakery", "basePrice": 3.75 },
+  { "id": "m-muffin", "name": "Blueberry Muffin", "category": "bakery", "basePrice": 3.25 },
+  { "id": "m-scone", "name": "Vanilla Scone", "category": "bakery", "basePrice": 3.50 },
+  { "id": "m-cookie", "name": "Chocolate Cookie", "category": "bakery", "basePrice": 2.50 },
+  { "id": "m-tumbler", "name": "Reusable Tumbler", "category": "merch", "basePrice": 18.00 },
+  { "id": "m-beans-lb", "name": "House Blend Beans 1lb", "category": "merch", "basePrice": 16.50 }
+]

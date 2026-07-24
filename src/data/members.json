@@ -1,0 +1,10 @@
+[
+  { "id": "mem-2001", "name": "Alex Rivera",   "tier": "gold",   "joined": "2024-08-12", "homeStoreId": "s-downtown"   },
+  { "id": "mem-2002", "name": "Priya Patel",   "tier": "silver", "joined": "2025-01-05", "homeStoreId": "s-university" },
+  { "id": "mem-2003", "name": "Sam Chen",      "tier": "basic",  "joined": "2025-11-22", "homeStoreId": "s-market"     },
+  { "id": "mem-2004", "name": "Jordan Lee",    "tier": "gold",   "joined": "2023-06-30", "homeStoreId": "s-airport-b"  },
+  { "id": "mem-2005", "name": "Morgan Diaz",   "tier": "silver", "joined": "2024-11-14", "homeStoreId": "s-riverwalk"  },
+  { "id": "mem-2006", "name": "Casey Kim",     "tier": "basic",  "joined": "2026-03-08", "homeStoreId": "s-tech-park"  },
+  { "id": "mem-2007", "name": "Taylor Novak",  "tier": "gold",   "joined": "2024-02-19", "homeStoreId": "s-old-town"   },
+  { "id": "mem-2008", "name": "Robin Okafor",  "tier": "silver", "joined": "2025-05-30", "homeStoreId": "s-downtown"   }
+]
